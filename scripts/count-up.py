@@ -23,13 +23,13 @@ for x in sorted_samples:
 fp.write('\n')
 
 for gene in d_gene:
-    fp.write('%s\t' % gene)
+    output = []
+    output.append(gene)
     for x in sorted_samples:
         x1 = x.split('.')[0]
         if d_gene[gene].has_key(x1):
-            fp.write('%s\t' % d_gene[gene][x1])
+            output.append("%s" % d_gene[gene][x1])
         else:
-            fp.write('0\t')
-    fp.write('\n')
-
-
+            output.append('0')
+    fp.write("\t".join(output))
+    fp.write("\n")
